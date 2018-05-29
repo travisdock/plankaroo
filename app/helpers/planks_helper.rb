@@ -1,0 +1,2 @@
+module PlanksHelper
+end

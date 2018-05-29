@@ -1,0 +1,2 @@
+class Plank < ApplicationRecord
+end
