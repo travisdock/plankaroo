@@ -1,1 +1,12 @@
-<h1>What's Your Name?</h1>
+<h1>New User<h1>
+
+<%= form_for @user do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.collection_radio_buttons :cohort_id, Cohort.all, :id, :name %>
+
+  <%= f.submit %>
+
+<% end %>
