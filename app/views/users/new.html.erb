@@ -5,6 +5,9 @@
   <%= f.label :name %>
   <%= f.text_field :name %><br>
 
+  <%= f.label :password %>
+  <%= f.text_field :password %><br>
+
   <%= f.collection_radio_buttons :cohort_id, Cohort.all, :id, :name %>
 
   <%= f.submit %>
