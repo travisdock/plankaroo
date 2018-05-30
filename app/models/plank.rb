@@ -9,4 +9,8 @@ class Plank < ApplicationRecord
     "#{self.minutes}:"+sec
   end
 
+  def total_seconds
+    self.seconds + (self.minutes * 60)
+  end
+
 end
