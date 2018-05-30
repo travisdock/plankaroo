@@ -1,3 +1,9 @@
 <h1><%= @user.name %></h1>
 
 <h2><%= @user.cohort.name %></h2>
+
+<ul><h3>Events:</h3>
+  <% @user.events.each do |event| %>
+    <li><%= link_to event.display_date, event %></li>
+  <% end %>
+</ul>
