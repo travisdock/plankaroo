@@ -10,5 +10,10 @@ class Event < ApplicationRecord
     self.time.strftime("%I:%M %p")
   end
 
+  def self.all_except(args)
+    where.not(id: args)
+  end
+
+
 
 end
