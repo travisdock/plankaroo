@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Plankaroo</title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +11,12 @@
   </head>
 
   <body>
+    <% if session[:user_id] %>
+      <%= link_to "User Profile", current_user %>
+      <%= link_to "Sign Out", logout_path %>
+      <%= link_to "My Cohort", current_user.cohort %>
+      <%= link_to "Log a Plank", new_plank_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
