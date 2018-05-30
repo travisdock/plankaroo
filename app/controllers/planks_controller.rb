@@ -7,8 +7,11 @@ class PlanksController < ApplicationController
   def create
     @plank = Plank.new(plank_params)
     @plank.user_id = current_user.id
-    @plank.save
-    redirect_to current_user
+    if @plank.save
+      redirect_to current_user
+    else
+      render new_plank_path
+    end
 
   end
 
