@@ -1,0 +1,13 @@
+<h1>Log your completed plank!</h1><br>
+<%= form_for @plank do |f| %>
+  <%= f.label :minutes %>
+  <%= f.number_field :minutes, max: 59, min: 0 %>
+
+  <%= f.label :seconds %>
+  <%= f.number_field :seconds, max: 59, min: 0%><br>
+
+  <%= f.label :event_id %>
+  <%= f.collection_select :event_id, Event.all, :id, :display_date %><br>
+
+  <%= f.submit %>
+<% end %>
