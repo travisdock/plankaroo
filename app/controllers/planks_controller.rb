@@ -14,6 +14,8 @@ class PlanksController < ApplicationController
         current_user.best = @plank.total_seconds
       end
       current_user.save
+      current_user.cohort.total += @plank.total_seconds
+      current_user.cohort.save
       redirect_to current_user
     else
       render new_plank_path

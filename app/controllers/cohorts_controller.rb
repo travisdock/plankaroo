@@ -15,7 +15,7 @@ class CohortsController < ApplicationController
   end
 
   def index
-    @cohorts = Cohort.all
+    @cohorts = Cohort.order('total DESC')
   end
 
   def show

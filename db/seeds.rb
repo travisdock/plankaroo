@@ -10,16 +10,16 @@ User.delete_all
 Event.delete_all
 Plank.delete_all
 #
-# 3.times do
-#   Cohort.create(name: Faker::Team.name, motto: Faker::MostInterestingManInTheWorld.quote)
-# end
+Cohort.create(name: "Timbledore's Army", motto: "Sick Yeah")
+Cohort.create(name: "Straight Outta Terminal", motto: "That's what you asked for")
+Cohort.create(name: "Instructors", motto: "Volume check")
 #
 #
 #
-# 20.times do
-#   User.create(name: Faker::Name.name, cohort_id: rand(Cohort.first.id..Cohort.last.id), password: "pass")
-# end
+20.times do
+  User.create(name: Faker::Name.first_name, cohort_id: rand(Cohort.first.id..Cohort.last.id), password: "pass")
+end
 
-5.times do
+7.times do
   Event.create(date: Faker::Time.forward(10, :afternoon), time: Faker::Time.forward(10, :afternoon), where: Faker::Address.country)
 end
