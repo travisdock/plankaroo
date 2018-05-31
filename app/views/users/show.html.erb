@@ -1,19 +1,44 @@
-<h1><%= @user.name %></h1>
+<div class="centered-background-container">
+  <h1><%= @user.name %></h1>
 
-<h2><%= link_to @user.cohort.name, @user.cohort %></h2>
+  <h2><%= link_to @user.cohort.name, @user.cohort %></h2>
 
-<br>
-<h2>STATS:</h2>
-<h3>Total Time: <%= @user.total_time %> </h3>
-<h3>Best Time: <%= @user.best_time %></h3>
-<h3>Percent of Cohort Total: <%= number_to_percentage(@user.percent_of_cohort, precision: 2) %></h3>
-<h3>Best Plank Rank: <%= @user.best_plank_rank %></h3>
-<h3>Total Plank Rank: <%= @user.total_plank_rank %></h3>
+  <br>
+  <h2>STATS:</h2>
+  <div class="row">
+    <div class="col-sm">
+      <h3>Total Time:</h3>
+      <%= @user.total_time %>
+    </div>
+    <div class="col-sm">
+      <h3>Best Time:</h3>
+      <%= @user.best_time %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <h3>Percent of Cohort Total:</h3>
+      <%= number_to_percentage(@user.percent_of_cohort, precision: 2) %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <h3>Best Plank Rank:</h3>
+      <%= @user.best_plank_rank %>
+    </div>
+    <div class="col-sm">
+      <h3>Total Plank Rank:</h3>
+      <%= @user.total_plank_rank %>
+    </div>
+  </div>
 
-<% if session[:user_id] == @user.id %>
-  <ul><h3>Planks:</h3>
-    <% @user.events.each do |event| %>
-      <li><%= link_to event.display_date, event %>-------------<%= Plank.find_by(user_id: @user.id, event_id: event.id).plank_time %></li>
-    <% end %>
-  </ul>
-<% end %>
+
+
+  <% if session[:user_id] == @user.id %>
+    <ul><h3>Planks:</h3>
+      <% @user.events.each do |event| %>
+        <li><%= link_to event.display_date, event %>-------------<%= Plank.find_by(user_id: @user.id, event_id: event.id).plank_time %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

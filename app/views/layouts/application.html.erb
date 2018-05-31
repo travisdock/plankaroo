@@ -10,6 +10,11 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,13 +22,36 @@
 
   <body>
     <% if session[:user_id] %>
-      <%= link_to "User Profile", current_user %>
-      <%= link_to "Sign Out", logout_path %>
-      <%= link_to "My Cohort", current_user.cohort %>
-      <%= link_to "Log a Plank", new_plank_path %>
-      <%= link_to "Top Users", users_path %>
-      <%= link_to "Top Cohorts", cohorts_path %>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">PLANKAROO</a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to "User Profile", current_user, {:class=>"btn btn-default"} %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My Cohort", current_user.cohort, {:class=>"btn btn-default"} %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Top Users", users_path, {:class=>"btn btn-default"} %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Top Cohorts", cohorts_path, {:class=>"btn btn-default"} %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log a Plank", new_plank_path, {:class=>"btn btn-default"} %>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <%= link_to "Sign Out", logout_path, {:class=>"btn btn-default"} %>
+          </li>
+        </ul>
+      </nav>
+
     <% end %>
-    <%= yield %>
+    <div class="centered-background-container">
+      <%= yield %>
+    </div>
+
   </body>
 </html>

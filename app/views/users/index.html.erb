@@ -2,7 +2,7 @@
 <br>
 <h1>All Users</h1>
 
-<ul>
+<ul style="display:inline-block;vertical-align:middle;">
   <% @users.each do |user| %>
   <li>
     <%= user.best_time %>  <%= link_to user.name, user %>
