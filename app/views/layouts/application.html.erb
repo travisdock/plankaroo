@@ -16,7 +16,8 @@
       <%= link_to "Sign Out", logout_path %>
       <%= link_to "My Cohort", current_user.cohort %>
       <%= link_to "Log a Plank", new_plank_path %>
-      <%= link_to "Leaderboard", users_path %>
+      <%= link_to "Top Users", users_path %>
+      <%= link_to "Top Cohorts", cohorts_path %>
     <% end %>
     <%= yield %>
   </body>
