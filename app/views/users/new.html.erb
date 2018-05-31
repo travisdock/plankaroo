@@ -1,26 +1,28 @@
-<h1>New User</h1>
+<div class="loginmodal-container">
+  <h1>PLANKAROO</h1>
+	<h2>New User</h2><br>
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= form_for @user do |f| %>
 
-<% if @user.errors.any? %>
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
 
-<% end %>
+    <%= f.label :password %>
+    <%= f.text_field :password %><br>
 
-<%= form_for @user do |f| %>
+    <%= f.label :cohort_id %>
+    <%= f.collection_select :cohort_id, Cohort.all, :id, :name %><br><br>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
+    <%= f.submit %>
 
-  <%= f.label :password %>
-  <%= f.text_field :password %><br>
-
-  <%= f.collection_radio_buttons :cohort_id, Cohort.all, :id, :name %>
-
-  <%= f.submit %>
-
-<% end %>
-<br>
-<h3><%= link_to "Login", login_path %></h3>
+  <% end %>
+  <div class="login-help">
+	<%= link_to "Login", login_path %>
+  </div>
+</div>
