@@ -20,6 +20,7 @@ class CohortsController < ApplicationController
 
   def show
     @cohort = Cohort.find(params[:id])
+    @users = @cohort.users.order('total DESC')
   end
 
   private

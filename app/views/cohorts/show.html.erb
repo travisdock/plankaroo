@@ -2,10 +2,10 @@
 <br>
 <h2><%= "\"#{@cohort.motto}\"" %></h2>
 <br>
-<ul>
-  <% @cohort.users.each do |user| %>
+<ol>
+  <% @users.each do |user| %>
     <li>
-      <%= link_to user.name, user %>
+      <%= link_to user.name, user %>  -  <%= number_to_percentage(user.percent_of_cohort, precision: 2) %>
     </li>
   <% end %>
-</ul>
+</ol>
