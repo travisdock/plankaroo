@@ -4,7 +4,14 @@
 
 <h3><%= link_to "Plank Club dates", events_path %></h3>
 
-<h3><%= link_to "Sign Up For A Plank!", new_plank_path %></h3>
+<h3><%= link_to "Log A Plank!", new_plank_path %></h3>
+
+<br><br>
+<h2>STATS:</h2>
+<h3>Total Time: <%= @user.total_time %> </h3>
+<br>
+
+
 
 <ul><h3>Planks:</h3>
   <% @user.events.each do |event| %>

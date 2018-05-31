@@ -9,6 +9,9 @@ class User < ApplicationRecord
   def best_time
     Time.at(self.best).strftime("%M:%S")
   end
+  def total_time
+    Time.at(self.total).strftime("%M:%S")
+  end
   # def total_plank
   #   self.planks.map do |plank|
   #     plank.total_seconds
