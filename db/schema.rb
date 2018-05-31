@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2018_05_30_231549) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "cohort_id"
-    t.integer "record", default: 0
+    t.integer "best", default: 0
     t.integer "total", default: 0
   end
 

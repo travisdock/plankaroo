@@ -9,3 +9,11 @@
   </li>
   <% end %>
 </ul>
+
+<ul>
+  <%= User.class_total.sort.each do |plank| %>
+    <li>
+      <%= plank %>
+    </li>
+  <% end %>
+</ul>
