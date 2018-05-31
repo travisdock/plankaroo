@@ -12,6 +12,9 @@ class User < ApplicationRecord
   def total_time
     Time.at(self.total).strftime("%M:%S")
   end
+  def percent_of_cohort
+    (self.total.to_f / self.cohort.total) * 100
+  end
   # def total_plank
   #   self.planks.map do |plank|
   #     plank.total_seconds
