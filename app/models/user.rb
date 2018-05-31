@@ -15,17 +15,27 @@ class User < ApplicationRecord
   end
 
   def percent_of_cohort
-    (self.total.to_f / self.cohort.total) * 100
+    if self.total > 0
+      (self.total.to_f / self.cohort.total) * 100
+    else
+      0
+    end
   end
 
   def best_plank_rank
-    ranks = User.order('best DESC')
-    ranks.index(self) + 1
+    if self.total > 0
+      User.order('best DESC').index(self) + 1
+    else
+      "No Planks"
+    end
   end
 
   def total_plank_rank
-    ranks = User.order('total DESC')
-    ranks.index(self) + 1
+    if self.total > 0
+      User.order('total DESC').index(self) + 1
+    else
+      "No Planks"
+    end
   end
   # def total_plank
   #   self.planks.map do |plank|
