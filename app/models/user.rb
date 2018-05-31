@@ -9,11 +9,23 @@ class User < ApplicationRecord
   def best_time
     Time.at(self.best).strftime("%M:%S")
   end
+
   def total_time
     Time.at(self.total).strftime("%M:%S")
   end
+
   def percent_of_cohort
     (self.total.to_f / self.cohort.total) * 100
+  end
+
+  def best_plank_rank
+    ranks = User.order('best DESC')
+    ranks.index(self) + 1
+  end
+
+  def total_plank_rank
+    ranks = User.order('total DESC')
+    ranks.index(self) + 1
   end
   # def total_plank
   #   self.planks.map do |plank|
