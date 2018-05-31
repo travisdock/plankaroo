@@ -8,11 +8,11 @@ class PlanksController < ApplicationController
     @plank = Plank.new(plank_params)
     @plank.user_id = current_user.id
 
-    current_user.total += @plank.total_seconds
-    if current_user.best < @plank.total_seconds
-      current_user.best = @plank.total_seconds
-    end
     if @plank.save
+      current_user.total += @plank.total_seconds
+      if current_user.best < @plank.total_seconds
+        current_user.best = @plank.total_seconds
+      end
       current_user.save
       redirect_to current_user
     else

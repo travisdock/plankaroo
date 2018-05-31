@@ -4,33 +4,36 @@ class User < ApplicationRecord
   belongs_to :cohort
   validates :name, :presence => true
   validates :name, :uniqueness => true
-  validates :password, :presence => true
   has_secure_password
 
-  def total_plank
-    self.planks.map do |plank|
-      plank.total_seconds
-    end.sum
+  def best_time
+    Time.at(self.best).strftime("%M:%S")
   end
-
-  def longest_plank
-    #make method that finds longest plank time
-  end
-
-  def self.class_total
-    self.all.map do |x|
-      # use longest plank and print each one to the screen
-      
-    end
-  end
-#   def pr
-#     self.planks.map do |plank|
-#       plank.total_seconds
-#     end.max
-#   end
-#
-#   def self.pr_sort
-#     User.all.sort_by()
-#   end
-# end
+  # def total_plank
+  #   self.planks.map do |plank|
+  #     plank.total_seconds
+  #   end.sum
+  # end
+  #
+  # def longest_plank
+  #   #make method that finds longest plank time
+  # end
+  #
+  # def self.class_total
+  #   self.all.map do |x|
+  #     # use longest plank and print each one to the screen
+  #
+  #   end
+  # end
+  # def pr
+  #   self.planks.map do |plank|
+  #     plank.total_seconds
+  #   end.max
+  # end
+  #
+  # def self.pr_sort
+  #   User.all.map do |user|
+  #     user.pr
+  #   end
+  # end
 end

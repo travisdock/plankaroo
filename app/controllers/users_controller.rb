@@ -9,7 +9,7 @@ before_action :authentication_required, except: [:new, :create]
   end
 
   def index
-    @users = User.all
+    @users = User.order('best DESC')
   end
 
   def create

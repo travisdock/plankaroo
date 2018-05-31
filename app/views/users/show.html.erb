@@ -12,17 +12,6 @@
   <% end %>
 </ul>
 <br>
-<h3>Plank Times</h3>
-<ul>
-  <% @user.planks.each do |plank| %>
-  <li>
-    <%= plank.total_seconds %> seconds
-  </li>
-  <% end %>
-</ul>
-
-<h3>total</h3>
-  <%= @user.total_plank %>
 
 <br><br><br>
 
