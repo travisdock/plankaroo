@@ -3,10 +3,14 @@
 <h3><%= @event.where %></h3><br>
 
 <% if !@event.users.include? current_user %>
-  <h1>not signed up</h1>
+  <h2>You are not signed up</h2>
+  <h1><%= link_to 'Sign up', event_signup_path, method: :post  %></h1>
+<% else %>
+  <h2>Planky Planking!</h2>
 <% end %>
 
-<%= link_to 'Sign up'  %>
+
+
 
 <ul><h3>Attendees:</h3>
   <% @event.users.each do |user| %>

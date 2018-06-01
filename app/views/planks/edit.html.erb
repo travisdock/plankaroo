@@ -6,15 +6,13 @@
     <% end %>
   </ul>
 <% end %>
+<h3><%= @plank.event.display_date %></h3>
 <%= form_for @plank do |f| %>
   <%= f.label :minutes %>
   <%= f.number_field :minutes, in: 0..59 %>
 
   <%= f.label :seconds %>
   <%= f.number_field :seconds, in: 0..59 %><br>
-
-  <%= f.label :event_id %>
-  <%= f.collection_select :event_id, Event.all_except(current_user.events), :id, :display_date %><br>
 
   <%= f.submit %>
 <% end %>

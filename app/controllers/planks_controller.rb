@@ -1,14 +1,13 @@
 class PlanksController < ApplicationController
 
-  def new
-    @plank = Plank.new
+  def edit
+    @plank = Plank.find(params[:id])
   end
 
-  def create
-    @plank = Plank.new(plank_params)
-    @plank.user_id = current_user.id
+  def update
+    @plank = Plank.find(params[:id])
 
-    if @plank.save
+    if @plank.update(plank_params)
       current_user.total += @plank.total_seconds
       if current_user.best < @plank.total_seconds
         current_user.best = @plank.total_seconds
@@ -18,7 +17,7 @@ class PlanksController < ApplicationController
       current_user.cohort.save
       redirect_to current_user
     else
-      render new_plank_path
+      render "edit"
     end
 
 

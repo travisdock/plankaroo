@@ -45,31 +45,21 @@ class User < ApplicationRecord
       "No Planks"
     end
   end
-  # def total_plank
-  #   self.planks.map do |plank|
-  #     plank.total_seconds
-  #   end.sum
+
+  def completed_planks
+    self.planks.select { |plank| (plank.minutes + plank.seconds) > 0}
+  end
+
+  def uncompleted_planks
+    self.planks.select { |plank| (plank.minutes + plank.seconds) == 0}
+  end
+
+  def uncompleted_plank_events
+    self.uncompleted_planks.map {|plank| plank.event }
+  end
+
+  # def recent_planks
+  #   self.completed_planks.order_by('created_at DESC').take(5)
   # end
-  #
-  # def longest_plank
-  #   #make method that finds longest plank time
-  # end
-  #
-  # def self.class_total
-  #   self.all.map do |x|
-  #     # use longest plank and print each one to the screen
-  #
-  #   end
-  # end
-  # def pr
-  #   self.planks.map do |plank|
-  #     plank.total_seconds
-  #   end.max
-  # end
-  #
-  # def self.pr_sort
-  #   User.all.map do |user|
-  #     user.pr
-  #   end
-  # end
+
 end

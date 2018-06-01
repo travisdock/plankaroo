@@ -1,8 +1,8 @@
-
+<h1>Upplanking Plank Clubs</h1>
 <ul>
   <% @events.each do |event| %>
     <li>
-      <% if event.date > Date.today %>
+      <% if event.date >= Date.today %>
         <%= event.date %> | <%= link_to event.where, event%>
       <% end %>
     </li>
