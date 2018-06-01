@@ -1,6 +1,6 @@
 <h1>Cohorts</h1><br>
 <ul>
   <% @cohorts.each do |cohort| %>
-    <li><%= cohort.total_time %>  <%= link_to cohort.name, cohort %></li>
+    <li id="cohort-list"><%= cohort.total_time %>  <%= link_to cohort.name, cohort %></li>
   <% end %>
 </ul>
