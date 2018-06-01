@@ -11,7 +11,15 @@ class User < ApplicationRecord
   end
 
   def total_time
-    Time.at(self.total).strftime("%M:%S")
+    seconds = self.total % 60
+    minutes = (self.total / 60) % 60
+    hours = self.total / (60 * 60)
+    format("%02d:%02d:%02d", hours, minutes, seconds)
+    # if self.total < 3600
+    #   Time.at(self.total).strftime("%M:%S")
+    # else
+    #
+    # end
   end
 
   def percent_of_cohort
