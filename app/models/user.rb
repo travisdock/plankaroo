@@ -58,6 +58,12 @@ class User < ApplicationRecord
     self.uncompleted_planks.map {|plank| plank.event }
   end
 
+  def sorted_planks
+    self.completed_planks.sort_by do |plank|
+      plank.event.date
+    end
+  end
+
   # def recent_planks
   #   self.completed_planks.order_by('created_at DESC').take(5)
   # end
