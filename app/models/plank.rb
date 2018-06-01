@@ -13,4 +13,8 @@ class Plank < ApplicationRecord
     self.seconds + (self.minutes * 60)
   end
 
+  def completed
+    (self.minutes + self.seconds) > 0 ? true : false
+  end
+
 end
