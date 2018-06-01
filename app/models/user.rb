@@ -61,7 +61,7 @@ class User < ApplicationRecord
   def sorted_planks
     self.completed_planks.sort_by do |plank|
       plank.event.date
-    end
+    end.last(5)
   end
 
   # def recent_planks

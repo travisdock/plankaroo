@@ -36,7 +36,7 @@
     <div class="col-sm">
       <% if session[:user_id] == @user.id %>
         <ul><h3>Recent Planks:</h3>
-          <% @user.sorted_planks.take(5).each do |plank| %>
+          <% @user.sorted_planks.each do |plank| %>
             <li><%= plank.plank_time %> - <%= link_to plank.event.display_date, plank.event %></li>
           <% end %>
         </ul>
