@@ -1,0 +1,18 @@
+<h1>Log your completed plank!</h1><br>
+<% if @plank.errors.any? %>
+  <ul>
+    <% @plank.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<h3><%= @plank.event.display_date %></h3>
+<%= form_for @plank do |f| %>
+  <%= f.label :minutes %>
+  <%= f.number_field :minutes, in: 0..59 %>
+
+  <%= f.label :seconds %>
+  <%= f.number_field :seconds, in: 0..59 %><br>
+
+  <%= f.submit %>
+<% end %>
