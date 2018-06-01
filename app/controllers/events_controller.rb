@@ -29,6 +29,10 @@ class EventsController < ApplicationController
     @event.update(event_params)
   end
 
+  def future
+    @events = Event.all
+  end
+
   private
   def event_params
     params.require(:event).permit(:date, :time, :where)
