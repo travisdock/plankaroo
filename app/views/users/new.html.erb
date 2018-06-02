@@ -2,7 +2,7 @@
   <h1>PLANKAROO</h1>
 	<h2>New User</h2><br>
   <% if @user.errors.any? %>
-    <ul>
+    <ul class="notice">
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
@@ -17,12 +17,12 @@
     <%= f.password_field :password %><br>
 
     <%= f.label :cohort_id %>
-    <%= f.collection_select :cohort_id, Cohort.all, :id, :name %><br><br>
+    <%= f.collection_select :cohort_id, Cohort.all, :id, :name, :include_blank => 'Choose cohort' %><br><br>
 
     <%= f.submit %>
 
   <% end %>
   <div class="login-help">
-	<%= link_to "Login", login_path %>
+    <h2><%= link_to "Login", login_path %></h2>
   </div>
 </div>
