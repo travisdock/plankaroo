@@ -42,7 +42,9 @@ class User < ApplicationRecord
   def better_best_plank_rank
     if self.total > 0
       times_list = User.all.map {|user| user.best }.uniq!
-      times_list = times_list.sort {|x,y| -(x <=> y)}
+      if times_list.length > 1
+        times_list = times_list.sort {|x,y| -(x <=> y)}
+      end
       user_rank = times_list.index(self.best) + 1
       user_rank
     else
