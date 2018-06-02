@@ -30,9 +30,21 @@ class User < ApplicationRecord
     end
   end
 
+  #no longer in use
   def best_plank_rank
     if self.total > 0
       User.order('best DESC').index(self) + 1
+    else
+      "No Planks"
+    end
+  end
+
+  def better_best_plank_rank
+    if self.total > 0
+      times_list = User.all.map {|user| user.best }.uniq!
+      times_list = times_list.sort {|x,y| -(x <=> y)}
+      user_rank = times_list.index(self.best) + 1
+      user_rank
     else
       "No Planks"
     end
@@ -61,11 +73,7 @@ class User < ApplicationRecord
   def sorted_planks
     self.completed_planks.sort_by do |plank|
       plank.event.date
-    end.last(5)
+    end.last(5).reverse
   end
-
-  # def recent_planks
-  #   self.completed_planks.order_by('created_at DESC').take(5)
-  # end
 
 end

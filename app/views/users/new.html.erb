@@ -14,7 +14,7 @@
     <%= f.text_field :name %><br>
 
     <%= f.label :password %>
-    <%= f.text_field :password %><br>
+    <%= f.password_field :password %><br>
 
     <%= f.label :cohort_id %>
     <%= f.collection_select :cohort_id, Cohort.all, :id, :name %><br><br>

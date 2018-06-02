@@ -1,5 +1,7 @@
+<h1>Every Plank Ever Planked</h1>
+
 <ul>
   <% @events.each do |event| %>
-    <li><%= link_to event.date.strftime("%A, %B %-d"), event %></li>
+    <li><%= event.date %> | <%= link_to event.where, event%></li>
   <% end %>
 </ul>

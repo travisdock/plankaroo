@@ -1,4 +1,4 @@
-<div class="centered-background-container">
+
   <h1><%= @user.name %></h1>
 
   <h2><%= link_to @user.cohort.name, @user.cohort %></h2>
@@ -24,7 +24,7 @@
   <div class="row">
     <div class="col-sm">
       <h3>Best Plank Rank:</h3>
-      <%= @user.best_plank_rank %>
+      <%= @user.better_best_plank_rank %>
     </div>
     <div class="col-sm">
       <h3>Total Plank Rank:</h3>
@@ -52,6 +52,3 @@
       <% end %>
     </div>
   </div>
-
-
-</div>
