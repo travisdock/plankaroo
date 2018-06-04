@@ -24,7 +24,11 @@ before_action :authentication_required, except: [:new, :create]
   end
 
   def edit
-    @user = User.find(params[:id])
+    if current_user.id == params[:id].to_i
+      @user = User.find(params[:id])
+    else
+      redirect_to current_user
+    end
   end
 
   def update

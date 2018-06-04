@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
 
   def new
-    @event = Event.new
+    if current_user.name == "Travis"
+      @event = Event.new
+    else
+      redirect_to events_path
+    end
   end
 
   def index
@@ -22,7 +26,11 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    if current_user.name == "Travis"
+      @event = Event.find(params[:id])
+    else
+      redirect_to events_path
+    end
   end
 
   def update
