@@ -1,7 +1,26 @@
 class CohortsController < ApplicationController
 
   def new
-    @cohort = Cohort.new
+    if current_user.name == "Travis" || current_user.name == "Shawn"
+      @cohort = Cohort.new
+    else
+      redirect_to cohorts_path
+    end
+  end
+
+  def edit
+    if current_user.name == "Travis" || current_user.name == "Shawn"
+      @cohort = Cohort.find(params[:id])
+    else
+      redirect_to cohorts_path
+    end
+  end
+
+  def update
+    @cohort = Cohort.find(params[:id])
+    @cohort.update(cohort_params)
+
+    redirect_to @cohort
   end
 
   def create
