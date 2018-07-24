@@ -19,6 +19,16 @@
  @import url('https://fonts.googleapis.com/css?family=Monoton');
 
 /****** LOGIN MODAL ******/
+ol {
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+
+
+}
+li {
+    text-align: left;
+}
 .loginmodal-container {
   padding: 30px;
   max-width: 350px;
@@ -153,10 +163,4 @@ body {
 ul li {
   list-style-type: none;
   text-align: left;
-}
-
-ol {
-  display: inline-block;
-  padding: 0 0 0 0;
-  text-align: center;
 }
