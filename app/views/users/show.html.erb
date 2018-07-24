@@ -1,4 +1,4 @@
-<div class="centered-background-container">
+
   <h1><%= @user.name %></h1>
 
   <h2><%= link_to @user.cohort.name, @user.cohort %></h2>
@@ -24,21 +24,31 @@
   <div class="row">
     <div class="col-sm">
       <h3>Best Plank Rank:</h3>
-      <%= @user.best_plank_rank %>
+      <%= @user.better_best_plank_rank %>
     </div>
     <div class="col-sm">
       <h3>Total Plank Rank:</h3>
-      <%= @user.total_plank_rank %>
+      <%= @user.better_total_plank_rank %>
     </div>
   </div>
 
-
-
-  <% if session[:user_id] == @user.id %>
-    <ul><h3>Planks:</h3>
-      <% @user.events.each do |event| %>
-        <li><%= link_to event.display_date, event %>-------------<%= Plank.find_by(user_id: @user.id, event_id: event.id).plank_time %></li>
+  <div class="row">
+    <div class="col-sm">
+      <% if session[:user_id] == @user.id %>
+        <ul><h3>Recent Planks:</h3>
+          <% @user.sorted_planks.each do |plank| %>
+            <li><%= plank.plank_time %> - <%= link_to plank.event.display_date, plank.event %></li>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% end %>
-</div>
+    </div>
+    <div class="col-sm">
+      <% if session[:user_id] == @user.id %>
+        <ul><h3>Uncompleted Planks:</h3>
+          <% @user.uncompleted_planks.each do |plank| %>
+            <li><%= link_to plank.event.display_date, edit_plank_path(plank) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>

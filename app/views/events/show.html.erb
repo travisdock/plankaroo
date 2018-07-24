@@ -3,13 +3,24 @@
 <h3><%= @event.where %></h3><br>
 
 <% if !@event.users.include? current_user %>
-  <h1>not signed up</h1>
+  <h2>You are not signed up</h2>
+  <h1><%= link_to 'Sign up', event_signup_path, method: :post  %></h1>
+<% else %>
+  <h2>Planky Planking!</h2>
+  <h3 class="notice">You can log your plank time by going to your profile and clicking on an uncompleted plank.</h3>
 <% end %>
 
-<%= link_to 'Sign up'  %>
+
+
 
 <ul><h3>Attendees:</h3>
   <% @event.users.each do |user| %>
-    <li><%= link_to user.name, user %></li>
+    <li><%= link_to user.name, user %>
+    <% plank = Plank.find_by(event_id: @event.id, user_id: user.id) %>
+    <% if plank.completed %>
+      <%= plank.plank_time %>
+
+    <% end %>
+    </li>
   <% end %>
 </ul>

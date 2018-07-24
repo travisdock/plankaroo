@@ -94,7 +94,7 @@ li {
 }
 
 .loginmodal-submit {
-  /* border: 1px solid #3079ed; */
+  border: 1px solid #3079ed;
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.1);
@@ -102,7 +102,7 @@ li {
   padding: 17px 0px;
   font-family: roboto;
   font-size: 14px;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+  background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed));
 }
 
 .loginmodal-submit:hover {
@@ -110,7 +110,7 @@ li {
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.3);
   background-color: #357ae8;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+  background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8));
 }
 
 .loginmodal-container a {
@@ -128,7 +128,7 @@ li {
 }
 
 body {
-  background-image: url("http://i754.photobucket.com/albums/xx189/UniHerper/Plankaroo_zpsvbbvjoav.png");
+  background-image: image-url('Plankaroo.png');
 }
 
 .loginmodal-container .notice{
@@ -136,6 +136,13 @@ body {
   color: red;
   text-align: center;
 }
+
+.notice{
+  font-size: 15px;
+  color: red;
+  text-align: center;
+}
+
 
 .nav-item{
   // padding: 0 10px;
@@ -154,10 +161,14 @@ body {
   width: 100% !important;
   background-color: #F7F7F7;
   margin: 0 auto;
-  border-radius: 2px;
+  border-radius: 10px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   font-family: roboto;
+  border-style: groove;
+  border-width: 15px;
+  border-color: grey;
+
 }
 
 ul li {

@@ -30,9 +30,24 @@ class User < ApplicationRecord
     end
   end
 
+  #no longer in use
   def best_plank_rank
     if self.total > 0
       User.order('best DESC').index(self) + 1
+    else
+      "No Planks"
+    end
+  end
+
+  def better_best_plank_rank
+    if self.total > 0
+      times_list = User.all.map {|user| user.best }
+      if times_list.length > 1
+        times_list.uniq!
+        times_list = times_list.sort {|x,y| -(x <=> y)}
+      end
+      user_rank = times_list.index(self.best) + 1
+      user_rank
     else
       "No Planks"
     end
@@ -45,31 +60,37 @@ class User < ApplicationRecord
       "No Planks"
     end
   end
-  # def total_plank
-  #   self.planks.map do |plank|
-  #     plank.total_seconds
-  #   end.sum
-  # end
-  #
-  # def longest_plank
-  #   #make method that finds longest plank time
-  # end
-  #
-  # def self.class_total
-  #   self.all.map do |x|
-  #     # use longest plank and print each one to the screen
-  #
-  #   end
-  # end
-  # def pr
-  #   self.planks.map do |plank|
-  #     plank.total_seconds
-  #   end.max
-  # end
-  #
-  # def self.pr_sort
-  #   User.all.map do |user|
-  #     user.pr
-  #   end
-  # end
+
+  def better_total_plank_rank
+    if self.total > 0
+      times_list = User.all.map {|user| user.total }
+      if times_list.length > 1
+        times_list.uniq!
+        times_list = times_list.sort {|x,y| -(x <=> y)}
+      end
+      user_rank = times_list.index(self.total) + 1
+      user_rank
+    else
+      "No Planks"
+    end
+  end
+
+  def completed_planks
+    self.planks.select { |plank| (plank.minutes + plank.seconds) > 0}
+  end
+
+  def uncompleted_planks
+    self.planks.select { |plank| (plank.minutes + plank.seconds) == 0}
+  end
+
+  def uncompleted_plank_events
+    self.uncompleted_planks.map {|plank| plank.event }
+  end
+
+  def sorted_planks
+    self.completed_planks.sort_by do |plank|
+      plank.event.date
+    end.last(5).reverse
+  end
+
 end

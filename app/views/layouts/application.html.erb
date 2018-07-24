@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Plankaroo</title>
+    <%= favicon_link_tag 'Plankaroo_icon.png' %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -26,9 +27,6 @@
         <a class="navbar-brand">PLANKAROO</a>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to "User Profile", current_user, {:class=>"btn btn-default"} %>
-          </li>
-          <li class="nav-item">
             <%= link_to "My Cohort", current_user.cohort, {:class=>"btn btn-default"} %>
           </li>
           <li class="nav-item">
@@ -38,10 +36,13 @@
             <%= link_to "Top Cohorts", cohorts_path, {:class=>"btn btn-default"} %>
           </li>
           <li class="nav-item">
-            <%= link_to "Log a Plank", new_plank_path, {:class=>"btn btn-default"} %>
+            <%= link_to "Find a Plank", future_path, {:class=>"btn btn-default"} %>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <%= link_to "#{current_user.name}\'s Profile", current_user, {:class=>"btn btn-default"} %>
+          </li>
           <li class="nav-item">
             <%= link_to "Sign Out", logout_path, {:class=>"btn btn-default"} %>
           </li>

@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
 
   def new
-    @event = Event.new
+    if current_user.name == "Travis" || current_user.name == "Shawn"
+      @event = Event.new
+    else
+      redirect_to events_path
+    end
   end
 
   def index
@@ -22,15 +26,30 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    if current_user.name == "Travis" || current_user.name == "Shawn"
+      @event = Event.find(params[:id])
+    else
+      redirect_to events_path
+    end
   end
 
   def update
+    @event = Event.find(params[:id])
     @event.update(event_params)
+
+    redirect_to @event
   end
 
   def future
     @events = Event.all
+  end
+
+  def signup
+
+    @event = Event.find(params[:id])
+    plank = Plank.create(minutes: 0, seconds: 0, user_id: current_user.id, event_id: @event.id)
+
+    redirect_to @event
   end
 
   private
